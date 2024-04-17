@@ -1,17 +1,30 @@
 package PaymentCommandManager.Model;
 
+import PaymentCommandManager.CommandeInterface.Paiement;
+
 public class Commande {
     private int id;
     private String produit;
     private int quantite;
     private double prix;
 
+    private Paiement paiement;
 
-    public Commande(int id, String produit, int quantite, double prix) {
+
+    public Commande(int id, String produit, int quantite, double prix,Paiement paiement) {
         this.id = id;
         this.produit = produit;
         this.quantite = quantite;
         this.prix = prix;
+        this.paiement=paiement;
+    }
+
+    public Paiement getPaiement() {
+        return paiement;
+    }
+
+    public void setPaiement(Paiement paiement) {
+        this.paiement = paiement;
     }
 
     public int getId() {
