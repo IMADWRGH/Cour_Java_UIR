@@ -7,7 +7,10 @@ public class Commande {
     private double prix;
     private  Paiment paiment;
 
-    public Commande(int id, String produit, int quantite, double prix,Paiment paiment) {
+    public Commande() {
+    }
+
+    public Commande(int id, String produit, int quantite, double prix, Paiment paiment) {
         this.id = id;
         this.produit = produit;
         this.quantite = quantite;
