@@ -1,6 +1,6 @@
-package PaymentCommandManager.Model;
+package PaymentCommandManager.Services;
 
-import PaymentCommandManager.Impl.Paiement;
+import PaymentCommandManager.CommandeInterface.Paiement;
 
 public class Online implements Paiement {
     @Override
