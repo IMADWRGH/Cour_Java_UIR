@@ -1,5 +1,5 @@
 package PaymentCommandManager.CommandeInterface;
 
 public interface Paiement {
-    void Pay();
+    String Pay();
 }
