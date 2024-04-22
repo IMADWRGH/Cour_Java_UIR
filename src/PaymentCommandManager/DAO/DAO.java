@@ -1,7 +1,9 @@
 package PaymentCommandManager.DAO;
 
+import PaymentCommandManager.Model.Commande;
 import com.mysql.jdbc.Statement;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -9,7 +11,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DAO {
+public class DAO implements IDAO<Commande>{
+    static String query;
     Statement statement=null;
     public DAO(){
         try {
@@ -19,9 +22,9 @@ public class DAO {
         }
     }
 
-
-    public int Set(String sql) throws SQLException {
-            return statement.executeUpdate(sql);
+    public static void main(String[] args) throws SQLException {
+        DAO dao =new DAO();
+        dao.insert();
     }
 
 
@@ -40,5 +43,31 @@ public class DAO {
                dictionary=null;
            }
           return list;
+    }
+
+    @Override
+    public  int  insert() throws SQLException {
+        String query="insert into Commande (product,quantite,prix) values(?,?,?)";
+        PreparedStatement preparedStatement = Connexion.connect().prepareStatement(query);
+        preparedStatement.setString(1, "p1");
+        preparedStatement.setInt(2, 22);
+        preparedStatement.setDouble(3, 333.45);
+        preparedStatement.execute();
+        return 1;
+    }
+
+    @Override
+    public int delete(Commande Obj) {
+        return 0;
+    }
+
+    @Override
+    public int update(Commande Obj) {
+        return 0;
+    }
+
+    @Override
+    public ArrayList<Commande> select(Commande Obj) {
+        return null;
     }
 }

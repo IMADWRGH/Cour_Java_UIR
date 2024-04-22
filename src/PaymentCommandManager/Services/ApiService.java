@@ -22,7 +22,7 @@ public class ApiService {
                    response.append(line);
                }
                bufferedReader.close();
-               System.out.println("JSON response: " + response.toString());
+//               System.out.println("JSON response: " + response.toString());
                return response.toString();
            }else {
                System.out.println("Error in request");
@@ -43,7 +43,7 @@ public class ApiService {
             String value = entry[1].trim().replaceAll("\"", "");
             jsonMap.put(key, value);
         }
-        System.out.println("Map : "+jsonMap);
+//        System.out.println("Map : "+jsonMap);
         return jsonMap;
 
    }
