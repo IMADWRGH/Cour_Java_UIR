@@ -3,7 +3,6 @@ package PaymentCommandManager.DAO;
 import PaymentCommandManager.Model.Commande;
 import com.mysql.jdbc.Statement;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DAO implements IDAO<Commande>{
+public class DAO{
     static String query;
     Statement statement=null;
     public DAO(){
@@ -22,10 +21,10 @@ public class DAO implements IDAO<Commande>{
         }
     }
 
-    public static void main(String[] args) throws SQLException {
-        DAO dao =new DAO();
-        dao.insert();
-    }
+//    public static void main(String[] args) throws SQLException {
+//        DAO dao =new DAO();
+//        dao.insert();
+//    }
 
 
     public ArrayList<Map<String,String>> Get(String sql)throws SQLException  {
@@ -45,28 +44,30 @@ public class DAO implements IDAO<Commande>{
           return list;
     }
 
-    @Override
-    public  int  insert() throws SQLException {
-        String query="insert into Commande (product,quantite,prix) values(?,?,?)";
-        PreparedStatement preparedStatement = Connexion.connect().prepareStatement(query);
-        preparedStatement.setString(1, "p1");
-        preparedStatement.setInt(2, 22);
-        preparedStatement.setDouble(3, 333.45);
-        preparedStatement.execute();
+//    @Override
+    public int insert(Commande commande) throws SQLException {
+        String query="insert into Commande (product,quantite,prix)" +
+                " values('"+commande.getProduit()+"','"+commande.getQuantite()+"','"+commande.getQuantite()+"')";
+        int resultSet= statement.executeUpdate(query);
+//        PreparedStatement preparedStatement = Connexion.connect().prepareStatement(query);
+//        preparedStatement.setString(1, "p1");
+//        preparedStatement.setInt(2, 22);
+//        preparedStatement.setDouble(3, 333.45);
+//        preparedStatement.execute();
         return 1;
     }
 
-    @Override
-    public int delete(Commande Obj) {
-        return 0;
-    }
+//    @Override
+//    public int delete(Commande Obj) {
+//        return 0;
+//    }
 
-    @Override
-    public int update(Commande Obj) {
-        return 0;
-    }
-
-    @Override
+//    @Override
+//    public int update(Commande Obj) {
+//        return 0;
+//    }
+//
+//    @Override
     public ArrayList<Commande> select(Commande Obj) {
         return null;
     }
